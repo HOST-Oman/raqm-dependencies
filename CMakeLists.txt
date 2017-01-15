@@ -113,7 +113,6 @@ if (RAQM_BUILD_FREETYPE2)
     set(freetypeDep freetype)
 endif()
 
-
 if (RAQM_BUILD_FRIBIDI)
     add_subdirectory(src/fribidi-0.19.7/RAQM-BUILD)
     set(fribidiDep fribidi)
@@ -126,10 +125,8 @@ endif()
 
 
 add_custom_target(POST_BUILD_CLEANUP ALL DEPENDS
-    ${zlibDep} ${libpngDep} ${jpegDep} ${libmngDep} ${libtiffDep} ${freetypeDep} ${pcreDep} ${luaDep} ${expatDep} ${xercesDep} ${SILLYDep} ${FreeImageDep} ${coronaDep} ${ILDep} ${ILUDep}
-    ${glewDep} ${tinyxmlDep} ${minizipDep} ${toluappDep} ${glfwDep})
+    ${fribidiDep} ${harfbuzzDep} ${freetypeDep})
 
 if (MSVC)
     add_custom_command(TARGET POST_BUILD_CLEANUP COMMAND ${CMAKE_COMMAND} -P "${CMAKE_SOURCE_DIR}/msvc_postbuild.cmake")
 endif()
-
