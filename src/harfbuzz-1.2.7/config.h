@@ -123,7 +123,7 @@
 #define HAVE_UCDN 1
 
 /* Have Uniscribe library */
-#define HAVE_UNISCRIBE 1
+// #define HAVE_UNISCRIBE 1
 
 /* Define to 1 if you have the <unistd.h> header file. */
 #ifndef _MSC_VER
@@ -131,10 +131,10 @@
 #endif
 
 /* Define to 1 if you have the <usp10.h> header file. */
-#define HAVE_USP10_H 1
+// #define HAVE_USP10_H 1
 
 /* Define to 1 if you have the <windows.h> header file. */
-#define HAVE_WINDOWS_H 1
+// #define HAVE_WINDOWS_H 1
 
 /* Define to the sub-directory in which libtool stores uninstalled libraries.
    */

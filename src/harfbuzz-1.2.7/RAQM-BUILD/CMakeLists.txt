@@ -79,8 +79,7 @@ set(PUBLIC_HEADERS
     
     ../src/hb-ucdn/ucdn.h
     ../src/hb-ucdn/unicodedata_db.h
-    
-    ../src/hb-uniscribe.h)
+)
     
  set(HEADERS
     ${PRIVATE_HEADERS}
@@ -126,8 +125,7 @@ set(PUBLIC_HEADERS
     ../src/hb-ucdn/ucdn.c
     
     ../src/hb-ucdn.cc
-      
-    ../src/hb-uniscribe.cc)
+      )
 
 
 if(MSVC)
@@ -165,9 +163,10 @@ set_target_properties(${DEPNAME}_static PROPERTIES
     COMPILE_DEFINITIONS "${TARGET_COMPILE_FLAGS_STATIC}")
     
 foreach(_H_FILE ${HEADERS})
-    add_custom_command(TARGET ${DEPNAME} POST_BUILD 
-                       COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_SOURCE_DIR}/${_H_FILE}"
-                                                        "${CMAKE_BINARY_DIR}/dependencies/include/harfbuzz/src/${_H_FILE}")
+      get_filename_component(filename ${_H_FILE} NAME)
+      add_custom_command(TARGET ${DEPNAME} POST_BUILD 
+			    COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_SOURCE_DIR}/${_H_FILE}"
+							      "${CMAKE_BINARY_DIR}/dependencies/include/harfbuzz/${filename}")
 endforeach()                                
 
 add_custom_command(TARGET ${DEPNAME} POST_BUILD 
