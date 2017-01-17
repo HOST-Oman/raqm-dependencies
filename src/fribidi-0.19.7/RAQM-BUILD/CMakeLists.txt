@@ -21,7 +21,7 @@ set(SOURCES
   ../lib/fribidi-joining.c
   ../lib/fribidi-joining-types.c
 )
-  
+
 set(HEADERS
   ../charset/fribidi-char-sets-iso8859-8.h
   ../charset/fribidi-char-sets-list.h
@@ -75,9 +75,10 @@ set_target_properties(${DEPNAME}_static PROPERTIES
     COMPILE_DEFINITIONS HAVE_CONFIG_H)
 
 foreach(_H_FILE ${HEADERS})
+    get_filename_component(filename ${_H_FILE} NAME )
     add_custom_command(TARGET ${DEPNAME} POST_BUILD 
                        COMMAND ${CMAKE_COMMAND} -E copy "${CMAKE_CURRENT_SOURCE_DIR}/${_H_FILE}"
-                                                        "${CMAKE_BINARY_DIR}/dependencies/include/fribidi/lib/${_H_FILE}")
+                                                        "${CMAKE_BINARY_DIR}/dependencies/include/fribidi/${filename}")
 endforeach()                                
 
 add_custom_command(TARGET ${DEPNAME} POST_BUILD 
